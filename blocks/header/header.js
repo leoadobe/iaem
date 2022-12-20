@@ -24,7 +24,7 @@ function createForm() {
   const input = document.createElement('input');
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'filter');
-  input.setAttribute('placeholder', 'Search...');
+  input.setAttribute('placeholder', 'Search ...');
   input.setAttribute('onkeyup', 'filterFunction()');
   input.setAttribute('class','filterInput');
   form.append(input);

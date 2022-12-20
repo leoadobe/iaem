@@ -141,7 +141,7 @@ header nav .nav-tools {
 }
 
 header nav .nav-tools p {
-  margin: 0;
+  margin: -0.4em;
 }
 
 header nav[aria-expanded='true'] .nav-tools img {
@@ -264,6 +264,9 @@ header nav[aria-expanded='true'] .nav-tools li {
 .filterInput{
   background: #d90404;
   color: white;
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  border-radius: 5px;
 }
 
 ::placeholder{

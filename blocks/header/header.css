@@ -28,10 +28,12 @@ header nav[aria-expanded='true'] {
 
 /* brand */
 header .nav-brand {
+  
   grid-area: brand;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 700;
   line-height: 1em;
+  color: #EB0F00;
 }
 
 header nav .nav-brand p {
@@ -39,8 +41,8 @@ header nav .nav-brand p {
 }
 
 header nav .nav-brand img {
-  width: 128px;
-  height: auto;
+  width: 32px;
+  height: 32px;
 }
 
 /* hamburger */
@@ -257,4 +259,13 @@ header nav[aria-expanded='true'] .nav-tools li {
     padding: 16px;
     box-shadow: 0 0 5px var(text-color);
   }
+}
+
+.filterInput{
+  background: #d90404;
+  color: white;
+}
+
+::placeholder{
+  color: white;
 }

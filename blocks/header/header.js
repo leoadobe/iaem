@@ -16,6 +16,28 @@ function collapseAllNavSections(sections) {
  * @param {Element} block The header block element
  */
 
+function createForm() {
+ 
+  const form = document.createElement('form');
+  form.setAttribute('action', '#');
+  form.setAttribute('method', 'post');
+  const input = document.createElement('input');
+  input.setAttribute('type', 'text');
+  input.setAttribute('id', 'filter');
+  input.setAttribute('placeholder', 'Search...');
+  input.setAttribute('onkeyup', 'filterFunction()');
+  input.setAttribute('class','filterInput');
+  form.append(input);
+  /*
+  const button = document.createElement('button');
+  button.setAttribute('type', 'submit');
+  button.setAttribute('value', 'Submit');
+  button.innerText = 'Submit';
+  form.append(button);
+  */
+  return form;
+}
+
 export default async function decorate(block) {
   const cfg = readBlockConfig(block);
   block.textContent = '';
@@ -62,5 +84,34 @@ export default async function decorate(block) {
     nav.setAttribute('aria-expanded', 'false');
     decorateIcons(nav);
     block.append(nav);
+
+    const contactForm = nav.querySelector('.icon-form');
+    if (contactForm) {
+      contactForm.parentNode.append(createForm());
+    }
+
+    const script = document.createElement('script'); 
+    script.append('function filterFunction(){'
+    + 'var input = document.getElementById("filter");'
+    + 'var filter = input.value.toUpperCase();'
+    + 'var div = document.getElementsByClassName("table-list-wrapper")[0];'
+    + 'var lis = div.getElementsByTagName("li");'
+    + 'var idx = 6;'
+    + 'for (i = idx; i < lis.length; i++){'
+    + 'var li = lis[i];'
+    + 'var parent = li.parentElement.parentElement.parentElement;'
+    + 'var txt = parent.innerText;'  
+    + 'if (txt.toUpperCase().indexOf(filter) > -1){'  
+    + 'parent.style.display = "";'  
+    + '} else {'  
+    + 'parent.style.display = "none";'  
+    + '}'  
+    + '}'  
+    + '}');   
+    nav.append(script);
   }
+}
+
+function leo(){
+  //document.getElementsByTagName("li")[25].parentElement.parentElement.parentElement.style="inline";
 }

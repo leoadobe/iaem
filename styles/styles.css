@@ -82,6 +82,28 @@ p, dl, ol, ul, pre, blockquote {
   margin-bottom: 1em;
 }
 
+.table-list{
+  font-size: 14px;
+}
+
+.table-list ul{
+  display: grid;
+  grid-template-columns: 10% 10% 15% 40% max-content;
+  column-gap: 10px;
+}
+
+.table-list ul li{ 
+  display:inline;
+}
+
+.table-list ul li ul{ 
+  display:table-row;
+}
+
+.table-list ul li ul li{ 
+  display:table-row;
+}
+
 a:any-link {
   color: var(--link-color);
   text-decoration: none;

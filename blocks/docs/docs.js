@@ -88,12 +88,12 @@ export default function decorate(block) {
         {
           tabCell.scope = 'wrap';
         }
-        else if(j==col_limit-2)
+        else if(j==col_limit-2 && textContent)
         {
           var html = '<a href="' + json[i][col[j]] + '" target="_blank" class="btn btn-dark webform-dialog webform-dialog-normal">Watch</a>';
           textContent = html;
         }
-        else if(j==col_limit-1)
+        else if(j==col_limit-1 && textContent)
         {
           var html = '<a href="' + json[i][col[j]] + '" target="_blank" class="btn btn-dark webform-dialog webform-dialog-normal">Download</a>';
           textContent = html;

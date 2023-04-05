@@ -59,6 +59,7 @@ export default function decorate(block) {
 
     // Create a table.
     var table = document.createElement("table");
+    table.setAttribute("id","tableDocs");
 
     // Create table header row using the extracted headers above.
     // table row.

@@ -92,6 +92,32 @@ export default async function decorate(block) {
 
     const script = document.createElement('script'); 
     script.append('function filterFunction(){'
+    +'var input, filter, table, tr, td, i, txtValue;'
+    +'input = document.getElementById("filter");'
+    +'filter = input.value.toUpperCase();'
+    +'table = document.getElementById("tableDocs");'
+    +'tr = table.getElementsByTagName("tr");'
+    +'for (i = 0; i < tr.length; i++) {'
+      +'for (n = 0; n < tr[i].cells.length; n++){'
+        +'td = tr[i].getElementsByTagName("td")[n];'
+        +'if (td) {'
+          +'txtValue = td.textContent || td.innerText;'
+          +'console.log(txtValue);'
+          +'console.log(filter);'
+          +'if (txtValue.toUpperCase().indexOf(filter) > -1) {'
+            +'tr[i].style.display = "";'
+            +'break;'
+            +'console.log("achei");'
+            +'} else {'
+              +'tr[i].style.display = "none";'
+              +'}'
+            +'} '      
+          +'}'
+        +'}'
+      +'}');
+
+    /* SEARCH V1 for Bullets (LI)
+    script.append('function filterFunction(){'
     + 'var input = document.getElementById("filter");'
     + 'var filter = input.value.toUpperCase();'
     + 'var div = document.getElementsByClassName("table-list-wrapper")[0];'
@@ -107,7 +133,8 @@ export default async function decorate(block) {
     + 'parent.style.display = "none";'  
     + '}'  
     + '}'  
-    + '}');   
+    + '}');
+    */
     nav.append(script);
 
         //logo link

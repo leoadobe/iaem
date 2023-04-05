@@ -95,54 +95,45 @@ export default async function decorate(block) {
     +'var input, filter, table, tr, td, i, txtValue;'
     +'input = document.getElementById("filter");'
     +'filter = input.value.toUpperCase();'
-    +'table = document.getElementById("tableDocs");'
-    +'tr = table.getElementsByTagName("tr");'
-    +'for (i = 0; i < tr.length; i++) {'
-      +'for (n = 0; n < tr[i].cells.length; n++){'
-        +'td = tr[i].getElementsByTagName("td")[n];'
-        +'if (td) {'
-          +'txtValue = td.textContent || td.innerText;'
-          +'console.log(txtValue);'
-          +'console.log(filter);'
-          +'if (txtValue.toUpperCase().indexOf(filter) > -1) {'
-            +'tr[i].style.display = "";'
-            +'break;'
-            +'console.log("achei");'
+    +'if(document.getElementById("tableDocs")){'
+      +'table = document.getElementById("tableDocs");'
+      +'tr = table.getElementsByTagName("tr");'
+      +'for (i = 0; i < tr.length; i++) {'
+        +'for (n = 0; n < tr[i].cells.length; n++){'
+          +'td = tr[i].getElementsByTagName("td")[n];'
+          +'if (td) {'
+            +'txtValue = td.textContent || td.innerText;'
+            +'if (txtValue.toUpperCase().indexOf(filter) > -1) {'
+              +'tr[i].style.display = "";'
+              +'break;'
             +'} else {'
               +'tr[i].style.display = "none";'
-              +'}'
-            +'} '      
-          +'}'
+            +'}'
+          +'} '      
         +'}'
-      +'}');
-
-    /* SEARCH V1 for Bullets (LI)
-    script.append('function filterFunction(){'
-    + 'var input = document.getElementById("filter");'
-    + 'var filter = input.value.toUpperCase();'
-    + 'var div = document.getElementsByClassName("table-list-wrapper")[0];'
-    + 'var lis = div.getElementsByTagName("li");'
-    + 'var idx = 6;'
-    + 'for (i = idx; i < lis.length; i++){'
-    + 'var li = lis[i];'
-    + 'var parent = li.parentElement.parentElement.parentElement;'
-    + 'var txt = parent.innerText;'  
-    + 'if (txt.toUpperCase().indexOf(filter) > -1){'  
-    + 'parent.style.display = "";'  
-    + '} else {'  
-    + 'parent.style.display = "none";'  
-    + '}'  
-    + '}'  
+      +'}'
+    +'} else if(document.getElementsByClassName("table-list-wrapper")[0]){'
+        + 'var input = document.getElementById("filter");'
+        + 'var filter = input.value.toUpperCase();'
+        + 'var div = document.getElementsByClassName("table-list-wrapper")[0];'
+        + 'var lis = div.getElementsByTagName("li");'
+        + 'var idx = 6;'
+        + 'for (i = idx; i < lis.length; i++){'
+          + 'var li = lis[i];'
+          + 'var parent = li.parentElement.parentElement.parentElement;'
+          + 'var txt = parent.innerText;'  
+          + 'if (txt.toUpperCase().indexOf(filter) > -1){'  
+            + 'parent.style.display = "";'  
+          + '} else {'  
+            + 'parent.style.display = "none";'  
+          + '}'  
+        + '}'  
+      + '}'  
     + '}');
-    */
     nav.append(script);
 
-        //logo link
-        if(document.getElementsByClassName("nav-brand") && document.getElementsByClassName("nav-brand").length>0)
-        document.getElementsByClassName("nav-brand")[0].innerHTML = "<a href='"+ window.location.host +"'>" + document.getElementsByClassName("nav-brand")[0].innerHTML + "</a>"
+    //logo link
+    if(document.getElementsByClassName("nav-brand") && document.getElementsByClassName("nav-brand").length>0)
+    document.getElementsByClassName("nav-brand")[0].innerHTML = "<a href='"+ window.location.host +"'>" + document.getElementsByClassName("nav-brand")[0].innerHTML + "</a>"
   }
-}
-
-function leo(){
-  //document.getElementsByTagName("li")[25].parentElement.parentElement.parentElement.style="inline";
 }

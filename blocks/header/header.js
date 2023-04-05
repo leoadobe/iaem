@@ -134,6 +134,6 @@ export default async function decorate(block) {
 
     //logo link
     if(document.getElementsByClassName("nav-brand") && document.getElementsByClassName("nav-brand").length>0)
-    document.getElementsByClassName("nav-brand")[0].innerHTML = "<a href='"+ window.location.host +"'>" + document.getElementsByClassName("nav-brand")[0].innerHTML + "</a>"
+    document.getElementsByClassName("nav-brand")[0].innerHTML = "<a href='"+ window.location.origin +"'>" + document.getElementsByClassName("nav-brand")[0].innerHTML + "</a>"
   }
 }

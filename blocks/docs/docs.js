@@ -13,6 +13,8 @@ export default function decorate(block) {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.responseType = 'json';
+      //xhr.setRequestHeader('Accept', '*/*');
+      //xhr.setRequestHeader('Access-Control-Expose-Headers','*');
 
       xhr.onload = function()
       {

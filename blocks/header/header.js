@@ -109,6 +109,10 @@ export default async function decorate(block) {
     + '}'  
     + '}');   
     nav.append(script);
+
+        //logo link
+        if(document.getElementsByClassName("nav-brand") && document.getElementsByClassName("nav-brand").length>0)
+        document.getElementsByClassName("nav-brand")[0].innerHTML = "<a href='"+ window.location.host +"'>" + document.getElementsByClassName("nav-brand")[0].innerHTML + "</a>"
   }
 }
 

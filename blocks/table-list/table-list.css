@@ -1,0 +1,30 @@
+.table-list{
+    font-size: var(--body-font-size-xxs);
+    
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+  
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: .35em;
+  }
+
+.table-list ul{
+    display: grid;
+    grid-template-columns: 10% 10% 15% 40% auto;
+    column-gap: 10px; 
+  }
+  
+  .table-list ul li{ 
+    display:inline;
+  }
+  
+  .table-list ul li ul{ 
+    display:table-row;
+  }
+  
+  .table-list ul li ul li{ 
+    display:table-row;
+  }

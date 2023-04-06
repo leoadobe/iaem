@@ -115,6 +115,16 @@ function loadDelayed() {
   // load anything that can be postponed to the latest here
 }
 
+export function createTag(name, attrs) {
+  const el = document.createElement(name);
+  if (typeof attrs === 'object') {
+    for (const [key, value] of Object.entries(attrs)) {
+      el.setAttribute(key, value);
+    }
+  }
+  return el;
+}
+
 async function loadPage() {
   await loadEager(document);
   await loadLazy(document);

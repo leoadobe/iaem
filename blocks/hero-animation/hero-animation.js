@@ -7,10 +7,6 @@ export default function decorate($block) {
   const $desktopRow = $rows.find(($row) => $row.children[0].textContent.toLowerCase() === 'desktop');
   const $contentRow = $rows.at(2);
 
-  console.log($mobileRow);
-  console.log($desktopRow);
-  console.log($contentRow);
-
   const [mobileVideo, desktopVideo] = [[$mobileRow, 'mobile'], [$desktopRow, 'desktop']]
     .map(([$row, typeHint]) => {
       const $poster = $row.querySelector('img');

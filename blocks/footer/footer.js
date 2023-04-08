@@ -18,11 +18,15 @@ export default async function decorate(block) {
   block.append(footer);
 
   //Initializing Reveal.js after loaded the components of the page
-  Reveal.initialize({
-    hash: true,
-    center: false,
-    embedded: true,
-    disableLayout: false,
-    progress: false
-  });
+    if(document.getElementsByClassName('slide block')){
+    Reveal.initialize({
+      width: "100%",
+      height: "100%",
+      hash: true,
+      center: false,
+      embedded: true,
+      disableLayout: false,
+      progress: false
+    });
+  }
 }

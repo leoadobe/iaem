@@ -92,8 +92,9 @@ async function loadLazy(doc) {
   await loadBlocks(main);
 
   const { hash } = window.location;
-  const element = hash ? main.querySelector(hash) : false;
-  if (hash && element) element.scrollIntoView();
+  //TODO: Review the comments, that's causing error when advance slides using Reveal.JS (adding # in the URL) and break the whole page
+  //const element = hash ? main.querySelector(hash) : false;
+  //if (hash && element) element.scrollIntoView();
 
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));

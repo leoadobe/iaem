@@ -16,4 +16,13 @@ export default async function decorate(block) {
   footer.innerHTML = html;
   await decorateIcons(footer);
   block.append(footer);
+
+  //Initializing Reveal.js after loaded the components of the page
+  Reveal.initialize({
+    hash: true,
+    center: false,
+    embedded: true,
+    disableLayout: false,
+    progress: false
+  });
 }

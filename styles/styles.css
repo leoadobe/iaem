@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
- :root {
+:root {
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
@@ -75,12 +75,29 @@ h4, h5, h6 {
   scroll-margin: calc(var(--nav-height) + 1em);
 }
 
-h1 { font-size: var(--heading-font-size-xxl) }
-h2 { font-size: var(--heading-font-size-xl) }
-h3 { font-size: var(--heading-font-size-l) }
-h4 { font-size: var(--heading-font-size-m) }
-h5 { font-size: var(--heading-font-size-s) }
-h6 { font-size: var(--heading-font-size-xs) }
+h1 {
+  font-size: var(--heading-font-size-xxl)
+}
+
+h2 {
+  font-size: var(--heading-font-size-xl)
+}
+
+h3 {
+  font-size: var(--heading-font-size-l)
+}
+
+h4 {
+  font-size: var(--heading-font-size-m)
+}
+
+h5 {
+  font-size: var(--heading-font-size-s)
+}
+
+h6 {
+  font-size: var(--heading-font-size-xs)
+}
 
 p, dl, ol, ul, pre, blockquote {
   margin-top: 1em;
@@ -120,7 +137,7 @@ a.button:any-link, button {
   border: 2px solid transparent;
   padding: 5px 30px;
   text-align: center;
-  font-style: normal; 
+  font-style: normal;
   font-weight: 600;
   cursor: pointer;
   color: var(--background-color);
@@ -132,7 +149,7 @@ a.button:any-link, button {
   border-radius: 30px;
 }
 
-a.button:hover, a.button:focus, button:hover, button:focus  {
+a.button:hover, a.button:focus, button:hover, button:focus {
   background-color: var(--link-hover-color);
   cursor: pointer;
 }
@@ -146,7 +163,7 @@ a.button.secondary, button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
-} 
+}
 
 
 main input {
@@ -155,7 +172,7 @@ main input {
   max-width: 50rem;
   display: block;
   margin-bottom: 1rem;
-  padding: 0.75rem 0.6rem;    
+  padding: 0.75rem 0.6rem;
   border-radius: 0.25rem;
   box-sizing: border-box;
   border: 1px solid var(--text-color);
@@ -212,7 +229,7 @@ main img {
 @media (min-width: 600px) {
   main .section {
     padding: 64px 32px;
-  }  
+  }
 }
 
 @media (min-width: 900px) {
@@ -222,21 +239,52 @@ main img {
     --heading-font-size-l: 36px;
     --heading-font-size-m: 30px;
     --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;  
+    --heading-font-size-xs: 22px;
   }
-  
-  .section > div {
+
+  .section>div {
     max-width: 1200px;
     margin: auto;
   }
-}
 
-/* progressive section appearance */
-main .section[data-section-status='loading'],
-main .section[data-section-status='initialized'] {
-  display: none;
-}
+  .reveal-main {
+    /*Setting height for reveal/slide component*/
+    height: 700px;
+  }
 
-main .section.highlight {
-  background-color: var(--highlight-background-color);
-}
+  /* progressive section appearance */
+  main .section[data-section-status='loading'],
+  main .section[data-section-status='initialized'] {
+    display: none;
+  }
+
+  main .section.highlight {
+    background-color: var(--highlight-background-color);
+  }
+
+  .reveal-one3rd-text {
+    float: left;
+    width: 33%;
+    padding: 10px;
+  }
+
+  .reveal-two3rd-media {
+    float: left;
+    width: 60%;
+    padding: 10px;
+  }
+
+.reveal-two3rd-media picture {
+    width: 95%;
+    height: auto;
+  }
+
+  .reveal-two3rd-media video {
+    width: 100%;
+    height: auto;
+  }
+
+  .reveal-image-caption {
+    font-size: 8pt;
+    margin-top: -2em;
+  }

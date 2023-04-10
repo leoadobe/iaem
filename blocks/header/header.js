@@ -16,7 +16,7 @@ function collapseAllNavSections(sections) {
  * @param {Element} block The header block element
  */
 
-function createForm() {
+function createForm(parentElement) {
  
   const form = document.createElement('form');
   form.setAttribute('action', '#');
@@ -28,14 +28,9 @@ function createForm() {
   input.setAttribute('onkeyup', 'filterFunction()');
   input.setAttribute('class','filterInput');
   form.append(input);
-  /*
-  const button = document.createElement('button');
-  button.setAttribute('type', 'submit');
-  button.setAttribute('value', 'Submit');
-  button.innerText = 'Submit';
-  form.append(button);
-  */
-  return form;
+  
+  parentElement.querySelector('.icon-form').style = 'display: none';
+  parentElement.append(form);
 }
 
 export default async function decorate(block) {
@@ -87,7 +82,7 @@ export default async function decorate(block) {
 
     const contactForm = nav.querySelector('.icon-form');
     if (contactForm) {
-      contactForm.parentNode.append(createForm());
+      createForm(contactForm.parentNode);
     }
 
     const script = document.createElement('script'); 
@@ -131,9 +126,5 @@ export default async function decorate(block) {
       + '}'  
     + '}');
     nav.append(script);
-
-    //logo link
-    if(document.getElementsByClassName("nav-brand") && document.getElementsByClassName("nav-brand").length>0)
-    document.getElementsByClassName("nav-brand")[0].innerHTML = "<a href='"+ window.location.origin +"'>" + document.getElementsByClassName("nav-brand")[0].innerHTML + "</a>"
   }
 }

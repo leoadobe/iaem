@@ -96,7 +96,7 @@ async function loadLazy(doc) {
   if(hash.indexOf('#/')<0){;
     const element = hash ? main.querySelector(hash) : false;
     if (hash && element) element.scrollIntoView();
-}
+  }
   
   loadHeader(doc.querySelector('header'));
   loadFooter(doc.querySelector('footer'));

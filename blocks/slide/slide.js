@@ -6,8 +6,6 @@ import {
 export default function decorate(block) {
     //look for the styles.css to change the heigth
     const divMainReveal = createTag('div', {class: 'reveal-main'});
-    
-
     const divReveal = createTag('div', {class: 'reveal'});
     divMainReveal.append(divReveal);
 

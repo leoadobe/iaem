@@ -1,8 +1,8 @@
 .hero-animation video {
   max-width: 100%;
-  width: 100%;
-  height: auto;
   display: block;
+  object-fit:cover;
+  height: 90vh;
 }
 
 .hero-animation h1 {

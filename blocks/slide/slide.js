@@ -28,15 +28,15 @@ export default function decorate(block) {
                 item.append(cols[i])
             } else if (i == 2) {
                 item = createTag('div', {class: 'reveal-two3rd-media'});                                             
-                var media;
-                var content = cols[i].innerHTML;
+                var media = createTag('figure', {});
+                var figcaption = createTag('figcaption',{class: 'reveal-image-caption'});
+                var content = cols[i].innerHTML;   
                 
                 //image or video
-                if(content.indexOf('<picture>')>-1){                    
-                    media = createTag('figure', {});                    
+                if(content.indexOf('<picture>')>-1){                                  
+                    //add image and caption
                     media.append(cols[i].querySelector('picture'));
-                    var figcaption = createTag('figcaption',{class: 'reveal-image-caption'});
-                    var caption = content.substring(content.indexOf('</picture>')+10,content.length-6);
+                    var caption = content.substring(content.lastIndexOf('<p>')+3,content.lastIndexOf('</p>'));
                     figcaption.append(caption);
                     media.append(figcaption);
 
@@ -46,15 +46,17 @@ export default function decorate(block) {
                     //hidden the video info
                     cols[i].style = 'display:none';
                     
-                    var media = createTag('video',{ playsinline: '', autoplay: '', loop: '', muted: '',})
+                    //create video tag
+                    var video = createTag('video',{ playsinline: true, autoplay: true, loop: true, muted: true});
                     var url = content.substring(content.lastIndexOf('href=')+6,content.indexOf('.mp4')+4);                   
-                    media.innerHTML = `<source src="${url}" type="video/mp4">`;
-                    media.muted = false;
-                    media.controls = true;      
-                    media.play();             
+                    video.innerHTML = `<source src="${url}" type="video/mp4">`;
+                    video.muted = false;
+                    video.controls = true;      
                     
-                    //TODO: Add caption to video media
-                    //vidcaption.append(content.substring(content.lastIndexOf('<p>')+3,content.lastIndexOf('</p>')));                    
+                    //add video and caption
+                    media.append(video);
+                    figcaption.append(content.substring(content.lastIndexOf('<p>')+3,content.lastIndexOf('</p>')));
+                    media.append(figcaption);
                 }
                 item.append(media);
             }

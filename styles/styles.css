@@ -226,51 +226,6 @@ main img {
   height: auto;
 }
 
-.reveal-main {
-  width: 85rem;
-  margin-left: -5rem;
-  /*Setting height for reveal/slide component*/
-  height: 700px;
-}
-
-.reveal-main.slides{
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.reveal-one3rd-text {
-  float: left;
-  width: 33%;
-  padding: 10px;
-}
-
-.reveal-two3rd-media {
-  float: left;
-  width: 60%;
-  padding: 10px;
-}
-
-.reveal-two3rd-media picture {
-  width: 95%;
-  height: auto;
-}
-
-.reveal-two3rd-media video {
-  width: 100%;
-  height: auto;
-}
-
-.reveal-image-caption {
-  font-size: 8pt;
-  margin-top: -2em;
-}
-
-@media (min-width: 600px) {
-  main .section {
-    padding: 64px 32px;
-  }
-}
-
 @media (min-width: 900px) {
   :root {
     --heading-font-size-xxl: 60px;

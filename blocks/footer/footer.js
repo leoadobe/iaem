@@ -18,7 +18,7 @@ export default async function decorate(block) {
   block.append(footer);
 
   //Initializing Reveal.js after loaded the components of the page
-    if(document.getElementsByClassName('slide block')){
+    if(document.getElementsByClassName('slide block').length>0){
     Reveal.initialize({
       width: "100%",
       height: "100%",

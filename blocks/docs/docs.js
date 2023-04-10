@@ -3,7 +3,7 @@ const col_limit = 9;
 
 export default function decorate(block) {
   //take the word URL to convert into a table
-  var contentDiv = block.getElementsByTagName( 'div')[0].getElementsByTagName('div')[0];
+  const contentDiv = block.getElementsByTagName( 'div')[0].getElementsByTagName('div')[0];
   const api = contentDiv.textContent;
   contentDiv.textContent = 'Loading...';
 

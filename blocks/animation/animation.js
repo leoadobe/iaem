@@ -37,11 +37,6 @@ import {
         }
   
         const $video = createTag('video', attribs);
-        /*
-        if (href.startsWith('https://hlx.blob.core.windows.net/external/')) {
-          href='/hlx_'+href.split('/')[4].replace('#image','');
-        }
-        */
         $video.innerHTML = `<source src="./media_${suffix}" type="video/mp4">`;
         $a.parentNode.replaceChild($video, $a);
         if (isAnimation) {

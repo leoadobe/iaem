@@ -1,0 +1,21 @@
+.animation video {
+  max-width: 100%;
+  display: block;
+  object-fit:cover;
+}
+
+.animation-container {
+  padding: unset !important;
+  margin: unset !important;
+  position: relative;
+}
+
+.animation-wrapper {
+  margin: unset !important;
+  width: 100%;
+  max-width: unset !important;
+}
+
+.animation {
+  position: relative;
+}

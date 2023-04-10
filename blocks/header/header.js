@@ -1,4 +1,5 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/lib-franklin.js';
+import { createTag } from '../../scripts/scripts.js';
 
 /**
  * collapses all open nav sections
@@ -15,7 +16,6 @@ function collapseAllNavSections(sections) {
  * decorates the header, mainly the nav
  * @param {Element} block The header block element
  */
-
 function createForm(parentElement) {
  
   const form = document.createElement('form');

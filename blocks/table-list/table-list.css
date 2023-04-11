@@ -6,7 +6,7 @@
     table-layout: fixed;
     width: 100%;
   
-    background-color: #f8f8f8;
+
     border: 1px solid #ddd;
     padding: .35em;
   }
@@ -28,3 +28,13 @@
   .table-list ul li ul li{ 
     display:table-row;
   }
+
+  .table-list > div:nth-of-type(1)  {
+    font-size: var(--body-font-size-xxxs);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .table-list > :not(div:nth-of-type(1))  {
+    background-color: #f8f8f8;
+  }  

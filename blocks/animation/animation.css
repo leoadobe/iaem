@@ -19,3 +19,29 @@
 .animation {
   position: relative;
 }
+
+.video-content {
+  width: 88%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 12%;
+  padding-bottom: 30px;
+  color: var(--text-color);
+  background-color: #ffffff75;
+}
+
+.video-content {
+  width: 88%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 12%;
+  padding-bottom: 30px;
+  color: var(--text-color);
+  background-color: #ffffff75;
+}
+
+.background-fade .video-content {
+  background: rgb(0 0 0 / 0%) linear-gradient(rgb(0 0 0 / 0%), rgb(0 0 0)) repeat scroll 0% 0%;
+}

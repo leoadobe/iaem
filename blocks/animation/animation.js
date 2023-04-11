@@ -27,7 +27,7 @@ import {
         let attribs = { controls: '' };
         if (isAnimation) {
           attribs = {
-            playsinline: '', autoplay: '', loop: '', muted: '',
+            playsinline: '', autoplay: '', loop: 'true', muted: '',
           };
         }
         const $poster = $a.closest('div').querySelector('img');
@@ -35,6 +35,16 @@ import {
           attribs.poster = $poster.src;
           $poster.remove();
         }
+
+        const $parent = $a.parentNode;
+        if ($parent) {
+          const $div = createTag('div', {class: 'video-content'});
+          $block.querySelectorAll('.animation h2').forEach(($b) => {
+            $div.append($b);
+            
+          });
+          $parent.append($div);
+        }        
   
         const $video = createTag('video', attribs);
         $video.innerHTML = `<source src="./media_${suffix}" type="video/mp4">`;
@@ -43,9 +53,8 @@ import {
           $video.addEventListener('canplay', () => {
             $video.muted = true;
             $video.play();
-            //$video.controls = true;
           });
-        }
+        }      
       }
   
       const $next = $parent.nextElementSibling;

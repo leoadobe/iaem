@@ -54,7 +54,7 @@ header nav .nav-brand p {
   margin: 0;
 }
 
-header nav .nav-brand img {
+header nav .nav-brand img, .nav-brand svg {
   width: 64px;
   height: 64px;
 }

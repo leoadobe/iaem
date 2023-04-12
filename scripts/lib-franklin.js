@@ -132,9 +132,16 @@ export function decorateIcons(element = document) {
     if (span.classList.length < 2 || !span.classList[1].startsWith('icon-')) {
       return;
     }
-    const icon = span.classList[1].substring(5);
+    let icon = span.classList[1].substring(5);
+    let isLogo = icon == 'logo';
+
+    //check if it's a customer page
+    if(isLogo && window.location.pathname.match('/customers/')){
+      icon = window.location.pathname.substring(11);
+    }
+
     // eslint-disable-next-line no-use-before-define
-    const resp = await fetch(`${window.hlx.codeBasePath}/icons/${icon}.svg`);
+    let resp = await fetch(`${window.hlx.codeBasePath}/icons/${icon}.svg`);
     if (resp.ok) {
       const iconHTML = await resp.text();
       if (iconHTML.match(/<style/i)) {
@@ -143,6 +150,18 @@ export function decorateIcons(element = document) {
         span.appendChild(img);
       } else {
         span.innerHTML = iconHTML;
+      }
+    } else if(isLogo){
+      resp = await fetch(`${window.hlx.codeBasePath}/icons/logo.svg`);
+      if(resp.ok){
+        const iconHTML = await resp.text();
+        if (iconHTML.match(/<style/i)) {
+          const img = document.createElement('img');
+          img.src = `data:image/svg+xml,${encodeURIComponent(iconHTML)}`;
+          span.appendChild(img);
+        } else {
+          span.innerHTML = iconHTML;
+        }
       }
     }
   });

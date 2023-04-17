@@ -48,7 +48,7 @@ export default function decorate(block) {
                     var video = createTag('video',{ playsinline: true, autoplay: true, loop: true, muted: true});
                     var url = content.substring(content.lastIndexOf('href=')+6,content.indexOf('.mp4')+4);                   
                     video.innerHTML = `<source src="${url}" type="video/mp4">`;
-                    video.muted = false;
+                    video.muted = true;
                     video.controls = true;      
                     
                     //add video and caption

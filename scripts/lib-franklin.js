@@ -147,7 +147,7 @@ export function decorateIcons(element = document) {
 
       //if there's image, break
       if(span.firstElementChild!=null)
-        return
+        return;
 
       const iconHTML = await resp.text();
       if (iconHTML.match(/<style/i)) {

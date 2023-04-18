@@ -129,9 +129,10 @@ export function toCamelCase(name) {
  */
 export function decorateIcons(element = document) {
   element.querySelectorAll('span.icon').forEach(async (span) => {
-    if (span.classList.length < 2 || !span.classList[1].startsWith('icon-')) {
+    if ((span.classList.length < 2 || !span.classList[1].startsWith('icon-')) && span.firstElementChild!=null) {
       return;
     }
+
     let icon = span.classList[1].substring(5);
     let isLogo = icon == 'logo';
 
@@ -143,6 +144,11 @@ export function decorateIcons(element = document) {
     // eslint-disable-next-line no-use-before-define
     let resp = await fetch(`${window.hlx.codeBasePath}/icons/${icon}.svg`);
     if (resp.ok) {
+
+      //if there's image, break
+      if(span.firstElementChild!=null)
+        return
+
       const iconHTML = await resp.text();
       if (iconHTML.match(/<style/i)) {
         const img = document.createElement('img');

@@ -51,7 +51,7 @@
   padding-bottom: 50px;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
   .button-wrapper {
       flex-direction: column;
       gap: 0;
@@ -68,6 +68,10 @@
       margin: 0 !important;
       width: 100%;
   }
+
+  .video-hero-content {
+    width: 15em;
+  }  
 }
 
 @media (max-width: 400px) {

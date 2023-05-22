@@ -3,7 +3,7 @@
   display: block;
   height: 80vh;
   margin-left: 50%;
-  margin-top: -2em;
+  margin-top: calc(-3% - 6em);
   overflow: clip;
 }
 
@@ -33,7 +33,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  top: 75px;
+  top: 10em;
   padding-left: 12%;
   padding-bottom: 30px;
   color: var(--text-color-white);
@@ -67,5 +67,11 @@
   .button-wrapper p a.button {
       margin: 0 !important;
       width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .video-hero-content {
+    width: 70%;
   }
 }

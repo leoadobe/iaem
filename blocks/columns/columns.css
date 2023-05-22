@@ -9,6 +9,10 @@
 
 .columns video {
     width: 100%;
+    border-color: #00000040;
+    border-style: outset;
+    border-width: 2px;
+    border-radius: 10px;    
 }
 
 @media (min-width: 900px) {

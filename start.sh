@@ -1,1 +1,1 @@
-hlx up
+hlx up --log-level debug --log-file --

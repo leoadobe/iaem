@@ -20,7 +20,7 @@ function loadVideos($block){
     if (href.endsWith('.mp4')) {
       const isAnimation = !!$a.closest('.animation');
       let attribs = {
-          playsinline: '', autoplay: '', loop: '', muted: '',
+          playsinline: '', autoplay: 'false', loop: '', muted: '',
         };
       const $poster = $a.closest('div').querySelector('img');
       if ($poster) {

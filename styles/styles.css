@@ -21,6 +21,7 @@
   --overlay-background-color: #eee;
   --highlight-background-color: #ccc;
   --text-color: #000;
+  --text-color-white: #fff;
 
   /* fonts */
   --body-font-family: 'adobe-clean', 'Trebuchet MS', sans-serif;

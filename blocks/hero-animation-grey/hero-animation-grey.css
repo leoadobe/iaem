@@ -16,10 +16,10 @@
 }
 
 .hero-animation-grey video {
-  width: 70rem;
+  width: 80rem;
   display: block;
   height: 80vh;
-  margin-left: 42.5%;
+  margin-left: 35%;
   margin-top: calc(-3.5% - 4em);
   overflow: clip;
 }

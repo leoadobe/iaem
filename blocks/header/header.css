@@ -48,6 +48,7 @@ header .nav-brand {
   font-weight: 700;
   line-height: 1em;
   color: #EB0F00;
+  cursor: pointer;
 }
 
 header nav .nav-brand p {

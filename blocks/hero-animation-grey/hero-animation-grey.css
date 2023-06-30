@@ -19,8 +19,8 @@
   width: 70rem;
   display: block;
   height: 80vh;
-  margin-left: 40%;
-  margin-top: calc(-3% - 4em);
+  margin-left: 42.5%;
+  margin-top: calc(-3.5% - 4em);
   overflow: clip;
 }
 
@@ -49,11 +49,11 @@ font-size: var(--body-font-size-m);
   background: rgb(0 0 0 / 0%) linear-gradient(rgb(0 0 0 / 0%), rgb(0 0 0)) repeat scroll 0% 0%;
 }
 
-.hero-animation-black {
+.hero-animation-grey {
   position: relative;
 }
 
-.section.black > .default-content-wrapper {
+.section.grey > .default-content-wrapper {
   padding-bottom: 50px;
 }
 
@@ -75,9 +75,9 @@ font-size: var(--body-font-size-m);
       width: 100%;
   }
 
-  .hero-animation-black video {
+  .hero-animation-grey video {
     height: 55vh;
-    margin-left: 15%;    
+    margin-left: 0;    
   }
 
   .video-hero-content p{

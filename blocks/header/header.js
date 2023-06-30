@@ -127,4 +127,11 @@ export default async function decorate(block) {
     + '}');
     nav.append(script);
   }
+
+  //set the icon as link to the home page
+  if(document.querySelector('div.nav-brand')){
+    document.querySelector('div.nav-brand').addEventListener("click", () => {
+      window.location.href = "/";
+    });
+  }
 }

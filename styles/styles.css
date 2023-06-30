@@ -29,10 +29,11 @@
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
-  --body-font-size-xs: 14px;
-  --body-font-size-xxs: 13px;
+  --body-font-size-l: 22px;
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 13px;
+  --body-font-size-xxs: 12px;
   --body-font-size-xxxs: 11px;
 
   /* heading sizes */
@@ -132,6 +133,7 @@ pre {
 
 a.button:any-link, button {
   font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
@@ -139,7 +141,7 @@ a.button:any-link, button {
   padding: 5px 30px;
   text-align: center;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   color: var(--background-color);
   background-color: var(--link-color);

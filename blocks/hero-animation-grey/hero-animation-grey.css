@@ -1,35 +1,34 @@
 /*@import "./hero-animation/hero-animation.css";*/
 
-.hero-animation-black-container {
+.hero-animation-grey-container {
   padding: unset !important;
   margin: unset !important;
   position: relative;
-  background-color: black;
-  color: white;
+  background-color: #f6f6f6;
+  color: black;
 }
 
-.hero-animation-black-wrapper {
+.hero-animation-grey-wrapper {
   margin: unset !important;
   width: 100%;
   max-width: unset !important;
-  background-color: black;
+  background-color: #f6f6f6;
 }
 
-.hero-animation-black video {
-  width: 60rem;
+.hero-animation-grey video {
+  width: 70rem;
   display: block;
   height: 80vh;
-  margin-left: 50%;
+  margin-left: 40%;
   margin-top: calc(-3% - 4em);
   overflow: clip;
 }
 
-.hero-animation-black h1 {
+.hero-animation-grey h1 {
   line-height: 1.3;
   font-size: 32px;
   padding-right: 30px;
 }
-
 
 .video-hero-content {
   width: 40%;
@@ -39,7 +38,7 @@
   top: calc(2em + 100px);
   padding-left: 12%;
   padding-bottom: 30px;
-  color: var(--text-color-white);
+  color: var(--text-color);
 }
 
 .video-hero-content p{

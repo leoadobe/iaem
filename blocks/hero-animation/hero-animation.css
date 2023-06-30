@@ -18,7 +18,7 @@
 }
 
 .button-wrapper p a.button {
-  font-size: 16px;
+  font-size: var(--body-font-size-s);
   background: white;
   border: 1px solid var(--body-secondary-background-color);
   color: var(--text-color);
@@ -58,6 +58,10 @@
   color: var(--text-color);
   background-color: #ffffff75;
 }
+
+.video-hero-content p{
+  font-size: var(--body-font-size-m);
+  }
 
 .background-fade .video-hero-content {
   background: rgb(0 0 0 / 0%) linear-gradient(rgb(0 0 0 / 0%), rgb(0 0 0)) repeat scroll 0% 0%;

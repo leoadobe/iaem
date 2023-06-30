@@ -2,6 +2,10 @@ const mobileBreakpoint = 800;
 let globalWindowWidth = window.innerWidth;
 
 export default function decorate($block) {
+  initiate($block);
+}
+
+export function initiate($block){
   const $rows = [...$block.children];
   const $mobileRow = $rows.find(($row) => $row.children[0].textContent.toLowerCase() === 'mobile');
   const $desktopRow = $rows.find(($row) => $row.children[0].textContent.toLowerCase() === 'desktop');

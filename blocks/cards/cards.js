@@ -15,4 +15,10 @@ export default function decorate(block) {
   ul.querySelectorAll('img').forEach((img) => img.closest('picture').replaceWith(createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }])));
   block.textContent = '';
   block.append(ul);
+
+  //add class to the links
+  var links = document.querySelectorAll(".cards .cards-card-body > p > a");
+  links.forEach(link => {
+    link.className = 'button secondary';
+}); 
 }

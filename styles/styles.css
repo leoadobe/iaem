@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-:root {
+ :root {
   /* colors */
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
@@ -24,7 +24,7 @@
   --text-color-white: #fff;
 
   /* fonts */
-  --body-font-family: 'adobe-clean', 'Trebuchet MS', sans-serif;
+  --body-font-family: 'Adobe Clean', adobe-clean, 'Trebuchet MS', sans-serif;
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
@@ -131,6 +131,7 @@ pre {
 
 /* buttons */
 
+/*
 a.button:any-link, button {
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-s);
@@ -166,6 +167,70 @@ a.button.secondary, button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
+}
+*/
+
+a.button:any-link,
+main .button {
+  cursor: pointer;
+  text-decoration: none;
+  padding: 5.5px 15px;
+  text-align: center;
+  font-size: var(--type-body-xs-size);
+  line-height: var(--body-line-height);
+  font-style: normal;
+  font-weight: 600;
+  color: var(--color-white);
+  background: transparent;
+  border: 2px solid var(--spectrum-blue);
+  border-radius: 100px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  position: relative;
+  height: fit-content;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  transform: translateZ(0);
+
+  /* fix for ios overflow with border-radius not working */
+  isolation: isolate;
+}
+
+a.button:any-link span {
+  color: var(--color-white);
+  transition: all 0.3s ease-in-out;
+}
+
+a.button:any-link:hover,
+main .form .button:hover {
+  color: var(--spectrum-blue);
+  border-color: var(--spectrum-blue);
+  transform: translateZ(0);
+}
+
+a.button:any-link:hover span{
+  color: var(--spectrum-blue);
+}
+
+a.button:any-link::before,
+main .form .button::before  {
+  content: '';
+  position: absolute;
+  left: -102%;
+  top: 0;
+  transition: all 0.3s ease-in-out;
+  width: 202%;
+  height: 104%;
+  z-index: -1;
+
+  /* 1st value: hovered color, 2nd value: original color */
+  background: radial-gradient(circle at left, var(--color-white) 50%, var(--spectrum-blue) 50%);
+}
+
+a.button:any-link:hover::before,
+main .button:hover::before {
+  left: 0%;
 }
 
 

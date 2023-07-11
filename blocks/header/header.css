@@ -16,7 +16,8 @@ header nav {
   
   /*Leo GNav */
   color: #4B4B4B;  
-  font-size: var(--body-font-size-xxs);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
 }
 
 header nav a:any-link {
@@ -24,7 +25,9 @@ header nav a:any-link {
   
   /*Leo GNav */
   text-decoration: none;
-  font-size: var(--body-font-size-xxs);
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+
 }
 
 header nav a:hover {
@@ -186,10 +189,12 @@ header nav[aria-expanded='true'] .nav-tools li {
     position: relative;
     padding-right: 32px;
 
+  
     /*Leo GNav */
     color: #4B4B4B;
     text-decoration: none;
-    font-size: var(--body-font-size-xxs);
+    font-size: var(--body-font-size-s);
+    font-weight: 400;
     padding-top: 0.2rem;
   }
 

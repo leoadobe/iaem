@@ -155,8 +155,15 @@ header nav[aria-expanded='true'] .nav-sections {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
-  flex: 0 0 auto;
+  /*flex: 0 0 auto;*/
   height: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+header nav .nav-tools .switcher {
+  margin-right: 2rem;
 }
 
 header nav .nav-tools p {

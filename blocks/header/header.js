@@ -1,5 +1,5 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/lib-franklin.js';
-import { createTag } from '../../scripts/scripts.js';
+import { createTag, getLanguage } from '../../scripts/scripts.js';
 
 /**
  * collapses all open nav sections
@@ -21,6 +21,14 @@ function createForm(parentElement) {
   const form = document.createElement('form');
   form.setAttribute('action', '#');
   form.setAttribute('method', 'post');
+
+  //add switcher
+  const span = document.createElement('span');
+  span.setAttribute('class','switcher');
+  span.innerHTML = '<a href="/br/">BR</a> | <a href="/es/">ES</a>';
+  form.append(span);
+
+    //add search
   const input = document.createElement('input');
   input.setAttribute('type', 'text');
   input.setAttribute('id', 'filter');
@@ -28,7 +36,8 @@ function createForm(parentElement) {
   input.setAttribute('onkeyup', 'filterFunction()');
   input.setAttribute('class','filterInput');
   form.append(input);
-  
+
+  //hide icon
   parentElement.querySelector('.icon-form').style = 'display: none';
   parentElement.append(form);
 }
@@ -37,9 +46,13 @@ export default async function decorate(block) {
   const cfg = readBlockConfig(block);
   block.textContent = '';
 
-  // fetch nav content
-  const navPath = cfg.nav || '/nav';
-  const resp = await fetch(`${navPath}.plain.html`);
+  //get multilanguage
+  var language = getLanguage();
+
+  // fetch nav content with language switcher
+  const navPath = language + (cfg.nav || '/nav');  
+
+  const resp = await fetch(window.location.origin + '/' +`${navPath}.plain.html`);
   if (resp.ok) {
     const html = await resp.text();
 

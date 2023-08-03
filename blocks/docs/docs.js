@@ -71,7 +71,9 @@ export default function decorate(block) {
       var th = document.createElement("th");
       
         //2 last column for lists data
-        if(i==col.length-3)
+        if(i==0)
+          th.scope = 'small';
+        else if(i==col.length-3)
           th.scope = 'big';
         else
           th.scope = 'col';    

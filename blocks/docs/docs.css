@@ -32,6 +32,10 @@ table td[scope=wrap] {
   font-size: var(--body-font-size-xxxs);
 }
 
+table th[scope=small] {
+  width: 15px;
+}
+
 table th[scope=big] {
   width: 40%;
 }

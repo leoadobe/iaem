@@ -70,9 +70,11 @@ export default function decorate(block) {
       // table header.
       var th = document.createElement("th");
       
-      //2 last column for lists data
-      if(i==col.length-3)
-        th.scope = 'big';    
+        //2 last column for lists data
+        if(j==col.length-3)
+          th.scope = 'big';
+        else
+          th.scope = 'col';    
       
       th.innerHTML = col[i];
       tr.appendChild(th);

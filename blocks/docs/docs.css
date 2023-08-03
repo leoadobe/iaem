@@ -32,6 +32,14 @@ table td[scope=wrap] {
   font-size: var(--body-font-size-xxxs);
 }
 
+table th[scope=big] {
+  width: 40%;
+}
+
+table td[scope=big] {
+  text-align: left;
+}
+
 table th {
   font-size: var(--body-font-size-xxxs);
   letter-spacing: .1em;

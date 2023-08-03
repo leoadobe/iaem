@@ -1,5 +1,4 @@
 import { readBlockConfig, decorateIcons } from '../../scripts/lib-franklin.js';
-const col_limit = 9;
 
 export default function decorate(block) {
   //take the word URL to convert into a table
@@ -67,7 +66,7 @@ export default function decorate(block) {
     // table row.
     var tr = table.insertRow(-1);
 
-    for (var i = 0; i < col.length && i<col_limit; i++) {
+    for (var i = 0; i < col.length; i++) {
       // table header.
       var th = document.createElement("th");
       th.scope = 'col';
@@ -80,28 +79,30 @@ export default function decorate(block) {
     {
       tr = table.insertRow(-1);
 
-      for (var j = 0; j < col.length && j<col_limit; j++) {
+      for (var j = 0; j < col.length; j++) {
         var tabCell = tr.insertCell(-1);
         tabCell.scope = 'row';
         var textContent = json[i][col[j]];
   
-        //last 3 columns
-        if(j==col_limit-3)
+        //2 last column for lists data
+        if(j==col.length-3)
+        {
+          var html = json[i][col[j]].replaceAll('•','<li>');
+          textContent = html;           
+          tabCell.scope = 'big';   
+        }
+        //1 last column for small text and wrap style 
+        if(j==col.length-2)
         {
           tabCell.scope = 'wrap';
         }
-        else if(j==col_limit-2 && textContent)
+        //last column for button or link        
+        else if(j==col.length-1 && textContent)
         {
-          var html = '<a href="' + json[i][col[j]] + '" target="_blank" class="btn btn-dark webform-dialog webform-dialog-normal">Watch</a>';
-          textContent = html;
-        }
-        else if(j==col_limit-1 && textContent)
-        {
-          var html = '<a href="' + json[i][col[j]] + '" target="_blank" class="btn btn-dark webform-dialog webform-dialog-normal">Download</a>';
+          var html = '<a href="' + json[i][col[j]] + '" target="_blank" class="btn btn-dark webform-dialog webform-dialog-normal">Link</a>';
           textContent = html;
         }          
         tabCell.innerHTML = textContent;
-
       }
       block.appendChild(table);
       contentDiv.textContent = '';

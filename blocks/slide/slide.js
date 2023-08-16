@@ -34,10 +34,9 @@ export default function decorate(block) {
                 if(content.indexOf('<picture>')>-1){                                  
                     //add image and caption
                     media.append(cols[i].querySelector('picture'));
-                    var caption = content.substring(content.lastIndexOf('<p>')+3,content.lastIndexOf('</p>'));
-                    figcaption.append(caption);
+                    var caption = content.substring(content.lastIndexOf('<p>')+3,content.lastIndexOf('</p>'));                    
+                    figcaption.innerHTML = caption;
                     media.append(figcaption);
-
                     //remove caption text
                     cols[i].remove(caption);
                 }else if(content.indexOf('.mp4')>-1){
@@ -53,7 +52,8 @@ export default function decorate(block) {
                     
                     //add video and caption
                     media.append(video);
-                    figcaption.append(content.substring(content.lastIndexOf('<p>')+3,content.lastIndexOf('</p>')));
+                    var caption = content.substring(content.lastIndexOf('<p>')+3,content.lastIndexOf('</p>'))
+                    figcaption.innerHTML = caption;
                     media.append(figcaption);
                 }
                 item.append(media);
@@ -65,3 +65,4 @@ export default function decorate(block) {
     });
     block.append(divMainReveal);
 };
+

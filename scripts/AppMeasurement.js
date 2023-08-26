@@ -5,6 +5,13 @@ var s=s_gi(s_account);
 // Make sure data is sent to the correct tracking server
 s.trackingServer = "leodasilvaiaem.sc.omtrdc.net";
 s.pageName = window.document.title;
+
+//check if it's a customer page
+if(window.location.pathname.match('/customers/')){
+    var custName = window.location.pathname.substring(11);
+    s.events = custName;    
+}
+
 //s.eVar1 = "Example eVar";
 //s.events = "event1";
 s.t();

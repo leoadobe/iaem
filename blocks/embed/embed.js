@@ -55,6 +55,11 @@ const embedTwitter = (url) => {
   return embedHTML;
 };
 
+const embedAdobe = (url) => {  
+  const embedHTML =  `<iframe src="${url.href}" frameborder="0" allowfullscreen class="xd-iframe"></iframe>`;
+  return embedHTML;
+};
+
 const loadEmbed = (block, link, autoplay) => {
   if (block.classList.contains('embed-is-loaded')) {
     return;
@@ -73,6 +78,10 @@ const loadEmbed = (block, link, autoplay) => {
       match: ['twitter'],
       embed: embedTwitter,
     },
+    {
+      match: ['xd.adobe'],
+      embed: embedAdobe,
+    },
   ];
 
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
@@ -88,6 +97,9 @@ const loadEmbed = (block, link, autoplay) => {
 };
 
 export default function decorate(block) {
+  console.log(block);
+  console.log(block.querySelector('a'));
+
   const placeholder = block.querySelector('picture');
   const link = block.querySelector('a').href;
   block.textContent = '';

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 27.6.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 64 64" style="enable-background:new 0 0 64 64;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#231F20;}
+	.st1{font-family:'AdobeClean-ExtraBold';}
+	.st2{font-size:14px;}
+	.st3{fill:#EB1000;}
+	.st4{clip-path:url(#SVGID_00000127033769262269791680000003314678714388186300_);}
+	.st5{fill:#E41836;}
+	.st6{fill:#FFFFFF;}
+</style>
+<text transform="matrix(1 0 0 1 30.0488 34.6377)" class="st0 st1 st2">+</text>
+<polygon class="st3" points="33.2,44.7 30.5,51.4 33.8,51.4 34.9,54.7 25,54.7 31.2,40 35.4,40 41.6,54.7 37.2,54.7 "/>
+<g id="g8537" transform="matrix(1.25,0,0,-1.25,48.637408,971.26488)">
+	<g id="g8539" transform="scale(0.24,0.24)">
+		<g id="g8541">
+			<g>
+				<defs>
+					<rect id="SVGID_1_" x="-69.5" y="3164.8" width="36.7" height="29.1"/>
+				</defs>
+				<clipPath id="SVGID_00000183954409808055441570000010778621283996171160_">
+					<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+				</clipPath>
+				<g id="g8543" style="clip-path:url(#SVGID_00000183954409808055441570000010778621283996171160_);">
+					<path id="path8551" class="st5" d="M-83.3,3163.4H-19v64.3h-64.3C-83.3,3227.7-83.3,3163.4-83.3,3163.4z"/>
+					<path id="path8553" class="st6" d="M-57.2,3172.5h3.2v16.2h-3.2V3172.5z"/>
+					<path id="path8555" class="st6" d="M-51.1,3172.5h5.2v22.3h-5.2C-51.1,3194.7-51.1,3172.5-51.1,3172.5z"/>
+					<path id="path8557" class="st6" d="M-60,3210.2c0,0,5.2,5.1,14,3.4c0,0,3.9-0.6,6.9-3.2c0,0,0.4-0.4,0.8-0.1c0,0,0.4,0.3,0,0.8
+						c0,0-2.6,3.5-7.6,5.1c0,0-6.9,2.5-14-0.9c0,0-4.4-1.8-6.8-6.8c0,0-3.5-1.1-6.1-2.6c0,0-0.8-0.3-0.5-0.9c0,0,0.2-0.4,0.9-0.1
+						c0,0,2.4,0.8,4.7,1.4c0,0-1.9-4.8,0.1-10.9c0.9-2.7,2.5-5.4,4.9-7.6c0,0,0.4-0.4,0.8-0.1c0,0,0.4,0.3,0.1,0.7
+						c0,0-1.9,2.9-2.7,7c-0.6,3.4-0.3,8,2,11.7c0,0,8.9,1.2,16.5-1.6c0,0,12.9-4.2,9.7-12c0,0-0.9-2.7-4.5-5.2c0,0-0.6-0.3-0.3-0.8
+						c0,0,0.3-0.4,0.9-0.1c0,0,5.5,1.8,7.8,6.2c0,0,4.8,7.3-6.5,13.3c0,0-3.1,1.7-7.1,2.5C-46,3209.5-53.2,3211.3-60,3210.2"/>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</svg>

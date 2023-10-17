@@ -1,3 +1,4 @@
+@import "/dist/reveal.css";
 
 .slide-container{
     background-image: url('../../media/aletter_background.png');

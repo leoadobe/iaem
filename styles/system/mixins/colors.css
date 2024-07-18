@@ -1,0 +1,44 @@
+@define-mixin background-color $type {
+  background-color: var(--ros-semantic-color-background-$(type));
+}
+
+@define-mixin foreground-color $type, $style {
+  color: var(--ros-semantic-color-foreground-$(type)-$(style));
+}
+
+@define-mixin color-combination $type {
+  @mixin background-color $type;
+
+  color: var(--ros-semantic-color-foreground-on-$(type)-default);
+
+  & :--heading {
+    color: var(--ros-semantic-color-foreground-on-$(type)-heading);
+  }
+
+  & .subtle {
+    color: var(--ros-semantic-color-foreground-on-$(type)-subtle);
+  }
+
+  & .muted {
+    color: var(--ros-semantic-color-foreground-on-$(type)-muted);
+  }
+}
+
+@define-mixin layer-base {
+  @mixin color-combination base;
+
+  & .highlighted {
+    background: var(--ros-semantic-color-foreground-on-base-highlighted);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+}
+
+@define-mixin layer-1 {
+  @mixin color-combination layer-1;
+}
+
+@define-mixin layer-2 {
+  @mixin color-combination layer-2;
+}

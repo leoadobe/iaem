@@ -1,0 +1,73 @@
+@import './mixins';
+
+.button-container {
+  display: inline-block;
+  margin-right: 10px;
+
+  @media (--ros-screen-md) {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.button {
+  &:not(:has(em)) {
+    padding: var(--ros-component-button-spacing-padding-y) var(--ros-component-button-spacing-padding-x);
+  }
+
+  display: flex;
+  justify-content: center;
+  height: var(--ros-component-button-size-default-height);
+  font-family: var(--ros-component-button-font-family-label);
+  font-size: var(--ros-component-button-font-size-label);
+  gap: var(--ros-component-button-spacing-gap);
+  text-transform: var(--ros-component-button-text-case-label);
+  line-height: 100%;
+  font-weight: 700;
+  border-style: solid;
+  align-items: center;
+  font-style: initial;
+  user-select: none;
+  transition-property: color, background-color, border-color, fill, stroke, opacity;
+  transition-duration: 0.2s;
+  outline: none;
+}
+
+.button em {
+  display: flex;
+  gap: var(--ros-component-button-spacing-gap);
+  padding: var(--ros-component-button-spacing-padding-y) var(--ros-component-button-spacing-padding-x);
+  align-items: center;
+  font-style: normal;
+}
+
+
+/* TODO: Support small and large buttons */
+
+/* .button.large {
+	font-size: var(--ros-font-size-button-lg);
+	padding: var(--ros-spacing-button-lg-vertical-padding) var(--ros-spacing-button-lg-horizontal-padding);
+}
+
+.button.small {
+	font-size: var(--ros-font-size-button-sm);
+	padding: var(--ros-spacing-button-sm-vertical-padding) var(--ros-spacing-button-sm-horizontal-padding);
+} */
+
+.button .icon,
+.button .icon svg {
+  @mixin icon sm;
+}
+
+.button.primary {
+  @mixin button primary;
+}
+
+.button.secondary {
+  @mixin button secondary;
+}
+
+.button.quiet {
+  @mixin button quiet;
+}
+

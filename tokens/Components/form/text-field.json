@@ -1,0 +1,238 @@
+{
+  "component": {
+    "text-field": {
+      "color": {
+        "default": {
+          "background-color": {
+            "value": "{component.form.color.background.input.default}",
+            "type": "color"
+          },
+          "foreground-color": {
+            "value": "{component.form.color.foreground.text.default}",
+            "type": "color"
+          },
+          "border-color": {
+            "value": "{semantic.color.border.base}",
+            "type": "color"
+          }
+        },
+        "hover": {
+          "background-color": {
+            "value": "{component.form.color.background.input.default}",
+            "type": "color"
+          },
+          "foreground-color": {
+            "value": "{component.form.color.foreground.text.default}",
+            "type": "color"
+          },
+          "border-color": {
+            "value": "{semantic.color.border.hover}",
+            "type": "color"
+          }
+        },
+        "key-focus": {
+          "background-color": {
+            "value": "{component.form.color.background.input.default}",
+            "type": "color"
+          },
+          "foreground-color": {
+            "value": "{component.form.color.foreground.text.default}",
+            "type": "color"
+          },
+          "border-color": {
+            "value": "{semantic.color.border.key-focus}",
+            "type": "color"
+          }
+        },
+        "success": {
+          "background-color": {
+            "value": "{component.form.color.background.input.default}",
+            "type": "color"
+          },
+          "foreground-color": {
+            "value": "{component.form.color.foreground.text.default}",
+            "type": "color"
+          },
+          "border-color": {
+            "value": "{semantic.color.positive.default}",
+            "type": "color"
+          }
+        },
+        "error": {
+          "background-color": {
+            "value": "{component.form.color.background.input.default}",
+            "type": "color"
+          },
+          "foreground-color": {
+            "value": "{component.form.color.foreground.text.default}",
+            "type": "color"
+          },
+          "border-color": {
+            "value": "{semantic.color.negative.default}",
+            "type": "color"
+          }
+        },
+        "disabled": {
+          "background-color": {
+            "value": "{semantic.color.background.disabled}",
+            "type": "color"
+          },
+          "foreground-color": {
+            "value": "{semantic.color.foreground.on-disabled.default}",
+            "type": "color"
+          },
+          "border-color": {
+            "value": "{semantic.color.border.disabled}",
+            "type": "color"
+          }
+        },
+        "placeholder": {
+          "value": "{component.form.color.foreground.placeholder.default}",
+          "type": "color"
+        },
+        "icon": {
+          "value": "{semantic.color.border.base}",
+          "type": "color"
+        }
+      },
+      "border-radius": {
+        "value": "{semantic.border-radius.default}",
+        "type": "borderRadius"
+      },
+      "border-width": {
+        "default": {
+          "value": "{semantic.border-width.sm}",
+          "type": "borderWidth"
+        },
+        "hover": {
+          "value": "{semantic.border-width.sm}",
+          "type": "borderWidth"
+        },
+        "key-focus": {
+          "value": "{semantic.border-width.md}",
+          "type": "borderWidth"
+        },
+        "disabled": {
+          "value": "{semantic.border-width.sm}",
+          "type": "borderWidth"
+        }
+      },
+      "spacing": {
+        "padding-x": {
+          "value": "{global.size.125}",
+          "type": "spacing"
+        },
+        "padding-y": {
+          "value": "{global.size.75}",
+          "type": "spacing"
+        },
+        "space-between": {
+          "value": "{semantic.spacing.gap.component.xs}",
+          "type": "spacing"
+        }
+      },
+      "font-size": {
+        "text": {
+          "value": "{component.form.font-size.text}",
+          "type": "fontSizes"
+        },
+        "placeholder": {
+          "value": "{component.form.font-size.placeholder}",
+          "type": "fontSizes"
+        }
+      },
+      "font-family": {
+        "text": {
+          "value": "{component.form.font-family.text}",
+          "type": "fontFamilies"
+        },
+        "placeholder": {
+          "value": "{component.form.font-family.placeholder}",
+          "type": "fontFamilies"
+        }
+      },
+      "line-height": {
+        "text": {
+          "value": "{component.form.line-height.text}",
+          "type": "lineHeights"
+        },
+        "placeholder": {
+          "value": "{component.form.line-height.placeholder}",
+          "type": "lineHeights"
+        }
+      },
+      "font-weight": {
+        "text": {
+          "value": "{component.form.font-weight.text}",
+          "type": "fontWeights"
+        },
+        "placeholder": {
+          "value": "{component.form.font-weight.placeholder}",
+          "type": "fontWeights"
+        }
+      },
+      "letter-spacing": {
+        "text": {
+          "value": "{component.form.letter-spacing.text}",
+          "type": "letterSpacing"
+        },
+        "placeholder": {
+          "value": "{component.form.letter-spacing.placeholder}",
+          "type": "letterSpacing"
+        }
+      },
+      "typography": {
+        "text": {
+          "value": {
+            "fontFamily": "{component.text-field.font-family.text}",
+            "fontWeight": "{component.text-field.font-weight.text}",
+            "lineHeight": "{component.text-field.line-height.text}",
+            "fontSize": "{component.text-field.font-size.text}",
+            "letterSpacing": "{component.text-field.letter-spacing.text}",
+            "paragraphSpacing": "",
+            "textDecoration": "{component.text-field.text-decoration.text}",
+            "textCase": "{component.text-field.text-case.text}"
+          },
+          "type": "typography"
+        },
+        "placeholder": {
+          "value": {
+            "fontFamily": "{component.text-field.font-family.placeholder}",
+            "fontWeight": "{component.text-field.font-weight.placeholder}",
+            "lineHeight": "{component.text-field.line-height.placeholder}",
+            "fontSize": "{component.text-field.font-size.placeholder}",
+            "letterSpacing": "{component.text-field.letter-spacing.placeholder}",
+            "paragraphSpacing": "",
+            "textDecoration": "{component.text-field.text-decoration.placeholder}",
+            "textCase": "{component.text-field.text-case.placeholder}"
+          },
+          "type": "typography"
+        }
+      },
+      "min-width": {
+        "value": "{component.form.sizing.input-min-width}",
+        "type": "sizing"
+      },
+      "text-decoration": {
+        "text": {
+          "value": "{component.form.text-decoration.text}",
+          "type": "textDecoration"
+        },
+        "placeholder": {
+          "value": "{component.form.text-decoration.placeholder}",
+          "type": "textDecoration"
+        }
+      },
+      "text-case": {
+        "text": {
+          "value": "{component.form.text-case.text}",
+          "type": "textCase"
+        },
+        "placeholder": {
+          "value": "{component.form.text-case.placeholder}",
+          "type": "textCase"
+        }
+      }
+    }
+  }
+}

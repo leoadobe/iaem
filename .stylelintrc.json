@@ -1,3 +1,13 @@
 {
+<<<<<<< HEAD
   "extends": ["stylelint-config-standard", "stylelint-config-prettier"]
 }
+=======
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "rules": {
+    "declaration-block-no-redundant-longhand-properties": null
+  }
+}
+>>>>>>> 075298c (Squashed 'plugins/experimentation/' content from commit 7efc8ed)

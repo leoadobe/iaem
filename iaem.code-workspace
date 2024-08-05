@@ -5,6 +5,9 @@
         },
         {
             "path": "../securbank"
+        },
+        {
+            "path": "../securbank-react"
         }
     ]
 }

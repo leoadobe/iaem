@@ -1,1 +1,1 @@
-hlx up --log-level debug --log-file --
+aem up --log-level debug --log-file --

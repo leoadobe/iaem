@@ -123,52 +123,98 @@ export function toCamelCase(name) {
   return toClassName(name).replace(/-([a-z])/g, (g) => g[1].toUpperCase());
 }
 
+const SVG_FORMAT = 'svg';
+const GIF_FORMAT = 'gif';
+
 /**
  * Replace icons with inline SVG and prefix with codeBasePath.
  * @param {Element} element
  */
 export function decorateIcons(element = document) {
+  //debug
+  console.debug("START ----> decorateIcons");
+
+  //check if there's a logo in fplace
+  let navbrand;
+  if(navbrand = element.querySelector('.nav-brand')){
+    if(navbrand.innerHTML.substring("img")>0)
+    {
+      //debug
+      console.log(navbrand.querySelector("img"));
+      
+      return;
+    }
+  }
+
+  //check if there's an icon, break it  
   element.querySelectorAll('span.icon').forEach(async (span) => {
-    if ((span.classList.length < 2 || !span.classList[1].startsWith('icon-')) && span.firstElementChild!=null) {
+    if ((span.classList.length > 2 || !span.classList[1].startsWith('icon-')) && span.firstElementChild!=null) {
+      //debug
+      console.log("decorateIcons: There's an icon in place");
+      
       return;
     }
 
+    //if there's image, break it
+    if(span.firstElementChild!=null){
+      //debug
+      console.log("decorateIcons: There's something in the first div of the nav");      
+      
+      return;
+    }
+    
+    //get the div class
     let icon = span.classList[1].substring(5);
     let isLogo = icon == 'logo';
 
-    //check if it's a customer page
+    //if there's a logo div, check to potentially get the customer logo
     if(isLogo && window.location.pathname.match('/customers/')){
       icon = window.location.pathname.substring(11);
     }
 
-    // eslint-disable-next-line no-use-before-define
-    let resp = await fetch(`${window.hlx.codeBasePath}/icons/${icon}.svg`);
-    if (resp.ok) {
+    //get the object
+    let resp = await fetch(`${window.hlx.codeBasePath}/icons/${icon}.`+ SVG_FORMAT); 
+    if (resp.ok) {      
+      //debug
+      console.log("decorateIcons: It's a customer logo");          
+      console.log(resp.url);
 
-      //if there's image, break
-      if(span.firstElementChild!=null)
-        return;
-
+      //check if the return is an image or a byte[]
       const iconHTML = await resp.text();
       if (iconHTML.match(/<style/i)) {
-        const img = document.createElement('img');
+        const img = document.createElement('img');  
         img.src = `data:image/svg+xml,${encodeURIComponent(iconHTML)}`;
         span.appendChild(img);
       } else {
         span.innerHTML = iconHTML;
       }
-    } else if(isLogo){
-      resp = await fetch(`${window.hlx.codeBasePath}/icons/logo.svg`);
+    }
+    else if(isLogo){
+      resp = await fetch(`${window.hlx.codeBasePath}/icons/logo.`+ GIF_FORMAT);
       if(resp.ok){
+      //debug
+      console.log("decorateIcons: It's a default logo");
+      console.log(resp.url);        
+
+        const tempSpan = document.createElement('span');
+        const img = document.createElement('img');
+        img.src = resp.url;
+        tempSpan.appendChild(img);
+        span.parentElement.replaceChild(tempSpan,span);
+        return;
+  
+        /*
+        //check if the return is an image or a byte[]
         const iconHTML = await resp.text();
         if (iconHTML.match(/<style/i)) {
-          const img = document.createElement('img');
+          const img = document.createElement('img');             
           img.src = `data:image/svg+xml,${encodeURIComponent(iconHTML)}`;
           span.appendChild(img);
         } else {
           span.innerHTML = iconHTML;
         }
-      }
+        */
+      }      
     }
   });
 }

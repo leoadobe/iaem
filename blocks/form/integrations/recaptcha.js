@@ -1,19 +1,13 @@
 export default class GoogleReCaptcha {
   id;
 
-  name;
-
-  config;
-
-  formName;
+  siteKey;
 
   loadPromise;
 
-  constructor(config, id, name, formName) {
-    this.config = config;
-    this.name = name;
+  constructor(siteKey, id) {
+    this.siteKey = siteKey;
     this.id = id;
-    this.formName = formName;
   }
 
   #loadScript(url) {
@@ -31,59 +25,30 @@ export default class GoogleReCaptcha {
   }
 
   loadCaptcha(form) {
-    if (form && this.config.siteKey) {
+    if (form && this.siteKey) {
       const submit = form.querySelector('button[type="submit"]');
       const obs = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const { siteKey } = this.config;
-            const url = this.config.uri;
-            if (this.config.version === 'enterprise') {
-              this.#loadScript(`${url}?render=${siteKey}`);
-            } else {
-              this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${siteKey}`);
-            }
+            this.#loadScript(`https://www.google.com/recaptcha/api.js?render=${this.siteKey}`);
             obs.disconnect();
           }
         });
       });
-      if (submit == null) {
-        // eslint-disable-next-line no-console
-        console.warn('Captcha can not be loaded. Submit button is missing.');
-        // eslint-disable-next-line no-alert
-        alert('Captcha can not be loaded. Add Submit button.');
-      } else {
-        obs.observe(submit);
-      }
-    } else {
-      // eslint-disable-next-line no-console
-      console.warn('Captcha configuration in missing.');
-      // eslint-disable-next-line no-alert
-      alert('Captcha can not be loaded. Captcha configuration in missing.');
+      obs.observe(submit);
     }
   }
 
   async getToken() {
-    if (!this.config.siteKey) {
+    if (!this.siteKey) {
       return null;
     }
     return new Promise((resolve) => {
       const { grecaptcha } = window;
-      if (this.config.version === 'enterprise') {
-        grecaptcha.enterprise.ready(async () => {
-          const submitAction = `submit_${this.formName}_${this.name}`;
-          const token = await grecaptcha.enterprise.execute(
-            this.config.siteKey,
-            { action: submitAction },
-          );
-          resolve(token);
-        });
-      } else {
-        grecaptcha.ready(async () => {
-          const token = await grecaptcha.execute(this.config.siteKey, { action: 'submit' });
-          resolve(token);
-        });
-      }
+      grecaptcha.ready(async () => {
+        const token = await grecaptcha.execute(this.siteKey, { action: 'submit' });
+        resolve(token);
+      });
     });
   }
 }

@@ -18,10 +18,6 @@
 * the terms of the Adobe license agreement accompanying it.
 *************************************************************************/
 
-/*
- *  Package: @aemforms/af-core
- *  Version: 0.22.150
- */
 var EventSource;
 (function (EventSource) {
     EventSource["CODE"] = "code";
@@ -135,8 +131,8 @@ class ValidationComplete extends ActionImpl {
     }
 }
 class Focus extends ActionImpl {
-    constructor(payload, dispatch = false) {
-        super(payload, 'focus', { dispatch });
+    constructor() {
+        super({}, 'focus', { dispatch: false });
     }
 }
 class Submit extends ActionImpl {
@@ -206,15 +202,5 @@ class RemoveInstance extends ActionImpl {
         super(payload, 'removeInstance');
     }
 }
-class RequestSuccess extends ActionImpl {
-    constructor(payload, dispatch = false) {
-        super(payload, 'requestSuccess', { dispatch });
-    }
-}
-class RequestFailure extends ActionImpl {
-    constructor(payload, dispatch = false) {
-        super(payload, 'requestFailure', { dispatch });
-    }
-}
 
-export { AddInstance, AddItem, Blur, Change, Click, CustomEvent, ExecuteRule, FieldChanged, Focus, FormLoad, Initialize, Invalid, RemoveInstance, RemoveItem, RequestFailure, RequestSuccess, Reset, Save, Submit, SubmitError, SubmitFailure, SubmitSuccess, UIChange, Valid, ValidationComplete, propertyChange };
+export { AddInstance, AddItem, Blur, Change, Click, CustomEvent, ExecuteRule, FieldChanged, Focus, FormLoad, Initialize, Invalid, RemoveInstance, RemoveItem, Reset, Save, Submit, SubmitError, SubmitFailure, SubmitSuccess, UIChange, Valid, ValidationComplete, propertyChange };

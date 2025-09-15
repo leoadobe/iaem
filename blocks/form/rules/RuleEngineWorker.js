@@ -19,43 +19,29 @@
  ************************************************************************ */
 import { createFormInstance } from './model/afb-runtime.js';
 import registerCustomFunctions from './functionRegistration.js';
-import { fetchData } from '../util.js';
-import { LOG_LEVEL } from '../constant.js';
 
 let customFunctionRegistered = false;
 
 export default class RuleEngine {
   rulesOrder = {};
 
-  fieldChanges = [];
-
   constructor(formDef) {
-    this.form = createFormInstance(formDef, undefined, LOG_LEVEL);
-    this.form.subscribe((e) => {
-      const { payload } = e;
-      this.fieldChanges.push(payload);
-    }, 'fieldChanged');
+    this.form = createFormInstance(formDef);
   }
 
   getState() {
     return this.form.getState(true);
   }
-
-  getFieldChanges() {
-    return this.fieldChanges;
-  }
 }
 
-let ruleEngine; let initPayload;
-onmessage = async (e) => {
-  async function handleMessageEvent(event) {
+let ruleEngine;
+onmessage = (e) => {
+  function handleMessageEvent(event) {
     switch (event.data.name) {
-      case 'init': {
-        const { search, ...formDef } = event.data.payload;
-        initPayload = event.data.payload;
-        ruleEngine = new RuleEngine(formDef);
+      case 'init':
+        ruleEngine = new RuleEngine(event.data.payload);
+        // eslint-disable-next-line no-case-declarations
         const state = ruleEngine.getState();
-        // Informing the main thread that the form is initialized
         postMessage({
           name: 'init',
           payload: state,
@@ -64,34 +50,9 @@ onmessage = async (e) => {
           postMessage(msg);
         };
         break;
-      }
       default:
         break;
     }
-  }
-  // prefills form data, waits for all async operations
-  // to complete, then restores state and syncs field changes to main thread
-  if (e.data.name === 'decorated') {
-    const { search, ...formDef } = initPayload;
-    const data = await fetchData(formDef.id, search);
-    if (data) {
-      ruleEngine.form.importData(data);
-    }
-    await ruleEngine.form.waitForPromises();
-    postMessage({
-      name: 'restore',
-      payload: ruleEngine.getState(),
-    });
-    ruleEngine.getFieldChanges().forEach((changes) => {
-      postMessage({
-        name: 'fieldChanged',
-        payload: changes,
-      });
-    });
-    // informing the main thread that form is ready
-    postMessage({
-      name: 'sync-complete',
-    });
   }
 
   if (!customFunctionRegistered) {

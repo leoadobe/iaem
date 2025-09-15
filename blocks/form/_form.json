@@ -14,27 +14,6 @@
           }
         }
       }
-    },
-    {
-      "...": "./models/form-components/_*.json#/definitions"
-    },
-    { 
-      "...": "./components/accordion/_accordion.json#/definitions" 
-    },
-    { 
-      "...": "./components/modal/_modal.json#/definitions" 
-    },
-    { 
-      "...": "./components/password/_password.json#/definitions" 
-    },
-    { 
-      "...": "./components/rating/_rating.json#/definitions" 
-    },
-    { 
-      "...": "./components/tnc/_tnc.json#/definitions" 
-    },
-    { 
-      "...": "./components/wizard/_wizard.json#/definitions" 
     }
   ],
   "models": [
@@ -73,10 +52,6 @@
                   {
                       "name": "Send email",
                       "value": "fd/af/components/guidesubmittype/email"
-                  },
-                  {
-                      "name": "Persist to Spreadsheet",
-                      "value": "spreadsheet"
                   }
               ],
               "value" : ""
@@ -94,13 +69,6 @@
               "label": "URL For POST request",
               "valueType": "string",
               "condition": { "==": [{ "var": "actionType" }, "fd/af/components/guidesubmittype/restendpoint"] }
-          },
-          {
-              "condition": { "==": [{ "var": "actionType" }, "spreadsheet"] },
-              "component": "text",
-              "name": "spreadsheetUrl",
-              "label": "Spreadsheet Url",
-              "valueType": "string"
           },
           {
               "component": "container",
@@ -150,12 +118,6 @@
                       "valueType": "boolean"
                   },
                   {
-                    "component": "boolean",
-                    "name": "useHtmlTemplate",
-                    "label": "Use html template",
-                    "valueType": "boolean"
-                  },
-                  {
                       "component": "aem-content",
                       "name": "templatePath",
                       "label": "External template path",
@@ -178,43 +140,32 @@
               ]
           }
       ]
-    },
-    {
-      "...": "./models/form-components/_*.json#/models"
-    },
-    {
-      "...": "./components/*/_*.json#/models"
     }
   ],
   "filters": [
     {
       "id": "form",
       "components": [
-        "captcha",
         "checkbox",
         "checkbox-group",
         "date-input",
         "drop-down",
         "email",
         "file-input",
-        "form-accordion",
         "form-button",
         "form-fragment",
         "form-image",
-        "form-modal",
         "form-reset-button",
         "form-submit-button",
+        "modal",
         "number-input",
         "panel",
-        "password",
         "plain-text",
         "radio-group",
-        "rating",
         "telephone-input",
         "text-input",
         "tnc",
-        "wizard",
-        "range"
+        "wizard"
       ]
     }
   ]

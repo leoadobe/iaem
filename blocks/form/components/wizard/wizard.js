@@ -41,11 +41,7 @@ export class WizardLayout {
   validateContainer(container) {
     const fieldElements = [...container.querySelectorAll(this.inputFields)];
     const isValid = fieldElements.reduce((valid, fieldElement) => {
-      const isHidden = fieldElement.closest('.field-wrapper')?.dataset?.visible === 'false';
-      let isFieldValid = true;
-      if (!isHidden) {
-        isFieldValid = fieldElement.checkValidity();
-      }
+      const isFieldValid = fieldElement.checkValidity();
       return valid && isFieldValid;
     }, true);
 
@@ -167,6 +163,15 @@ export class WizardLayout {
       });
     }
 
+    const resetBtn = panel.querySelector('.reset-wrapper');
+    if (resetBtn) {
+      wrapper.append(resetBtn);
+    }
+
+    const submitBtn = panel.querySelector('.submit-wrapper');
+    if (submitBtn) {
+      wrapper.append(submitBtn);
+    }
     this.assignIndexToSteps(panel);
     panel.append(wrapper);
     panel.querySelector('fieldset')?.classList.add('current-wizard-step');

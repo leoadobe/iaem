@@ -1,7 +1,8 @@
-import { loadCSS } from '../../scripts/aem.js';
+//import { loadCSS } from '../../scripts/aem.js';
+import { loadCSS } from '../../scripts/lib-franklin.js';
 
-let customComponents = ['range'];
-const OOTBComponentDecorators = ['accordion', 'file', 'modal', 'password', 'rating', 'repeat', 'tnc', 'toggleable-link', 'wizard'];
+let customComponents = [];
+const OOTBComponentDecorators = ['file-input', 'wizard', 'modal', 'tnc', 'toggleable-link'];
 
 export function setCustomComponents(components) {
   customComponents = components;
@@ -16,15 +17,10 @@ export function getCustomComponents() {
 }
 
 /**
- * Loads a component from the components directory
- * @param {string} componentName - The name of the component to load
- * @param {HTMLElement} element - The DOM element to decorate
- * @param {Object} fd - The form definition object
- * @param {HTMLElement} container - The container element
- * @param {string} formId - The form ID
- * @returns {Promise<HTMLElement>} The decorated element
+ * Loads JS and CSS for a block.
+ * @param {Element} block The block element
  */
-async function loadComponent(componentName, element, fd, container, formId) {
+async function loadComponent(componentName, element, fd, container) {
   const status = element.dataset.componentStatus;
   if (status !== 'loading' && status !== 'loaded') {
     element.dataset.componentStatus = 'loading';
@@ -38,7 +34,7 @@ async function loadComponent(componentName, element, fd, container, formId) {
               `${window.hlx.codeBasePath}/blocks/form/components/${componentName}/${componentName}.js`
             );
             if (mod.default) {
-              await mod.default(element, fd, container, formId);
+              await mod.default(element, fd, container);
             }
           } catch (error) {
             // eslint-disable-next-line no-console
@@ -61,18 +57,18 @@ async function loadComponent(componentName, element, fd, container, formId) {
  * returns a decorator to decorate the field definition
  *
  * */
-export default async function componentDecorator(element, fd, container, formId) {
+export default async function componentDecorator(element, fd, container) {
   const { ':type': type = '', fieldType } = fd;
   if (fieldType === 'file-input') {
-    await loadComponent('file', element, fd, container, formId);
+    await loadComponent('file', element, fd, container);
   }
 
   if (type.endsWith('wizard')) {
-    await loadComponent('wizard', element, fd, container, formId);
+    await loadComponent('wizard', element, fd, container);
   }
 
   if (getCustomComponents().includes(type) || getOOTBComponents().includes(type)) {
-    await loadComponent(type, element, fd, container, formId);
+    await loadComponent(type, element, fd, container);
   }
 
   return null;

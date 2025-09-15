@@ -38,9 +38,8 @@ function createButton(label, icon) {
   return button;
 }
 
-export function insertRemoveButton(fieldset, wrapper, form) {
-  const label = fieldset.dataset?.repeatDeleteButtonLabel || 'Delete';
-  const removeButton = createButton(label, 'remove');
+function insertRemoveButton(fieldset, wrapper, form) {
+  const removeButton = createButton('', 'remove');
   removeButton.addEventListener('click', () => {
     fieldset.remove();
     wrapper.querySelector('.item-add').setAttribute('data-visible', 'true');
@@ -53,24 +52,27 @@ export function insertRemoveButton(fieldset, wrapper, form) {
     });
     form.dispatchEvent(event);
   });
-  fieldset.append(removeButton);
+  const legend = fieldset.querySelector(':scope>.field-label');
+  legend.append(removeButton);
 }
 
-export const add = (wrapper, form, actions) => (e) => {
-  const fieldset = wrapper['#repeat-template'];
-  const max = wrapper.getAttribute('data-max');
-  const min = wrapper.getAttribute('data-min');
-  const childCount = wrapper.children.length - 1;
+const add = (wrapper, form) => (e) => {
+  const { currentTarget } = e;
+  const { parentElement } = currentTarget;
+  const fieldset = parentElement['#repeat-template'];
+  const max = parentElement.getAttribute('data-max');
+  const min = parentElement.getAttribute('data-min');
+  const childCount = parentElement.children.length - 1;
   const newFieldset = fieldset.cloneNode(true);
   newFieldset.setAttribute('data-index', childCount);
-  update(newFieldset, childCount, wrapper['#repeat-template-label']);
+  update(newFieldset, childCount, parentElement['#repeat-template-label']);
   if (childCount >= +min) {
     insertRemoveButton(newFieldset, wrapper, form);
   }
-  if (+max !== -1 && +max <= childCount + 1) {
+  if (+max <= childCount + 1) {
     e.currentTarget.setAttribute('data-visible', 'false');
   }
-  actions.insertAdjacentElement('beforebegin', newFieldset);
+  currentTarget.insertAdjacentElement('beforebegin', newFieldset);
   const event = new CustomEvent('item:add', {
     detail: { item: { name: newFieldset.name, id: newFieldset.id } },
     bubbles: false,
@@ -88,42 +90,28 @@ function getInstances(el) {
   return siblings;
 }
 
-export function insertAddButton(wrapper, form) {
-  const actions = document.createElement('div');
-  actions.className = 'repeat-actions';
-  const addLabel = wrapper?.dataset?.repeatAddButtonLabel || 'Add';
-  const addButton = createButton(addLabel, 'add');
-  addButton.addEventListener('click', add(wrapper, form, actions));
-  actions.appendChild(addButton);
-  wrapper.append(actions);
-}
-
 export default function transferRepeatableDOM(form) {
   form.querySelectorAll('[data-repeatable="true"][data-index="0"]').forEach((el) => {
     const instances = getInstances(el);
-    const wrapper = document.createElement('div');
-    wrapper.dataset.min = el.dataset.min || 0;
-    wrapper.dataset.max = el.dataset.max;
-    wrapper.dataset.variant = el.dataset.variant || 'addDeleteButtons';
-    wrapper.dataset.repeatAddButtonLabel = el.dataset?.repeatAddButtonLabel ? el.dataset.repeatAddButtonLabel : 'Add';
-    wrapper.dataset.repeatDeleteButtonLabel = el.dataset?.repeatDeleteButtonLabel ? el.dataset.repeatDeleteButtonLabel : 'Remove';
-    el.insertAdjacentElement('beforebegin', wrapper);
-    wrapper.append(...instances);
-    wrapper.querySelectorAll('.item-remove').forEach((element) => element.remove());
-    wrapper.querySelectorAll('.repeat-actions').forEach((element) => element.remove());
+    const div = document.createElement('div');
+    div.setAttribute('data-min', el.dataset.min);
+    div.setAttribute('data-max', el.dataset.max);
+    el.insertAdjacentElement('beforebegin', div);
+    div.append(...instances);
+    const addLabel = 'Add';
+    const addButton = createButton(addLabel, 'add');
+    addButton.addEventListener('click', add(div, form));
     const cloneNode = el.cloneNode(true);
     cloneNode.removeAttribute('id');
-    wrapper['#repeat-template'] = cloneNode;
-    wrapper['#repeat-template-label'] = el.querySelector(':scope>.field-label')?.textContent;
+    div['#repeat-template'] = cloneNode;
+    div['#repeat-template-label'] = el.querySelector(':scope>.field-label')?.textContent;
     if (+el.min === 0) {
       el.remove();
     } else {
-      update(el, 0, wrapper['#repeat-template-label']);
+      update(el, 0, div['#repeat-template-label']);
       el.setAttribute('data-index', 0);
     }
-    if (el.dataset.variant !== 'noButtons') {
-      insertAddButton(wrapper, form);
-    }
-    wrapper.className = 'repeat-wrapper';
+    div.append(addButton);
+    div.className = 'repeat-wrapper';
   });
 }

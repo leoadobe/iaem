@@ -1,4 +1,4 @@
-import { DEFAULT_THANK_YOU_MESSAGE } from './constant.js';
+import { DEFAULT_THANK_YOU_MESSAGE, getSubmitBaseUrl } from './constant.js';
 
 export function submitSuccess(e, form) {
   const { payload } = e;
@@ -44,10 +44,12 @@ function getFieldValue(fe, payload) {
   if (fe.type === 'radio') {
     return fe.form.elements[fe.name].value;
   } if (fe.type === 'checkbox') {
-    if (fe.checked) {
-      if (payload[fe.name]) {
+    if (payload[fe.name]) {
+      if (fe.checked) {
         return `${payload[fe.name]},${fe.value}`;
       }
+      return payload[fe.name];
+    } if (fe.checked) {
       return fe.value;
     }
   } else if (fe.type !== 'file') {
@@ -75,9 +77,19 @@ async function prepareRequest(form) {
   const { payload } = constructPayload(form);
   const headers = {
     'Content-Type': 'application/json',
+    // eslint-disable-next-line comma-dangle
+    'x-adobe-form-hostname': window?.location?.hostname
   };
   const body = { data: payload };
-  const url = form.dataset.submit || form.dataset.action;
+  let url;
+  let baseUrl = getSubmitBaseUrl();
+  if (!baseUrl) {
+    // eslint-disable-next-line prefer-template
+    baseUrl = 'https://forms.adobe.com/adobe/forms/af/submit/';
+    url = baseUrl + btoa(`${form.dataset.action}.json`);
+  } else {
+    url = form.dataset.action;
+  }
   return { headers, body, url };
 }
 
